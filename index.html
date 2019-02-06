@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Jarolin Vargas" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Airports Distance Calculator</title>
+    </head>
+    <body>
+        <main class="distance-calculator input-active">
+            <div class="distance-calculator-container">
+                <!-- input -->
+                <div class="input-container">
+                    <div class="heading-container">
+                        <h1>Airports Distance Calculator</h1>
+                        <p>Select two airports below to get the approximate distance between the two</p>
+                    </div>
+                    <form class="inputs-container" action="#" autocomplete="off">
+                        <div class="input-1">
+                            <label>First Airport</label>
+                            <input type="text" list="first-airport" name="FIRST_AIRPORT" placeholder="Type or select an airport"/>
+                            <datalist id="first-airport">
+                                <!-- airport autocomplete options appended here in index.js -->
+                            </datalist>
+                        </div>
+                        <div class="input-2">
+                            <label>Second Airport</label>
+                            <input type="text" list="second-airport" name="SECOND_AIRPORT" placeholder="Type or select an airport"/>
+                            <datalist id="second-airport">
+                                <!-- airport autocomplete options appended here in index.js -->                                
+                            </datalist>
+                        </div>
+                    </form>
+                </div>
+                <!-- output -->
+                <div class="output-container">
+                    <div class="heading-container">
+                        <h1 class="output-distance"><!-- distance --></h1>
+                        <p class="output-p"><!-- is the approximate... --></p>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+            <span class="calculator-action-btn">Submit to Get Distance</span>
+        </main>
+        <script src="js/index.js"></script>
+        <script>
+            // Google maps
+            function initMap() {
+                var myLatLng = {lat: -25.363, lng: 131.044};
+                window.map = new google.maps.Map(document.getElementById('map'), {
+                    disableDefaultUI: true
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwTGa24dR-WeQWccmSP5gPpb5lgNOHdwU&libraries=geometry&callback=initMap" type="text/javascript"></script>
+    </body>
+</html>
