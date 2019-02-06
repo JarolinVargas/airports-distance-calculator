@@ -19,7 +19,7 @@ class DistanceCalculator {
         // Get airports JSON file, and add options elements to datalists
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'json';
-        xhr.open('GET', '/sympler-assignment/data/airports.json');
+        xhr.open('GET', '/sympler-assignment-master/data/airports.json');
         xhr.onload = function() {
             if (xhr.readyState === 4) {
                 const airpJSON = xhr.response;
