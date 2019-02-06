@@ -80,8 +80,8 @@ class DistanceCalculator {
         const [A1Lat, A1Lon, A2Lat, A2Lon] = [Number(airport1Obj.lat), Number(airport1Obj.lon), Number(airport2Obj.lat), Number(airport2Obj.lon)];
         const A1LatLng1 = new google.maps.LatLng(A1Lat, A1Lon);
         const A2LatLng2 = new google.maps.LatLng(A2Lat, A2Lon);
-        const distance = google.maps.geometry.spherical.computeDistanceBetween(A1LatLng1, A2LatLng2) * 0.000621371192 | 0; // compute distance using google maps API & convert to miles
-        this.outputDistance.textContent = `${distance} Miles`;
+        const distance = google.maps.geometry.spherical.computeDistanceBetween(A1LatLng1, A2LatLng2) / 1852 | 0; // compute distance using google maps API & convert to nautical miles
+        this.outputDistance.textContent = `${distance} Nautical Miles`;
         this.outputP.innerHTML = `Is the approximate distance between <strong>${airport1Obj.name}</strong> and <strong>${airport2Obj.name}</strong>`;
         // clear previous markers
         if( mapMarker1 !== null || mapMarker2 !== null ) {
@@ -110,7 +110,7 @@ class DistanceCalculator {
         const airport2InputVal = this.airport2InputEl.value;
         const airport1Obj = airportsJSON.find(x => x.name === airport1InputVal);
         const airport2Obj = airportsJSON.find(x => x.name === airport2InputVal);
-        // validate and change view only when entering getting results
+        // validate and change view
         if( this.currentView === 'input' && this.validateSelectedAirports(airport1InputVal, airport2InputVal, airport1Obj, airport2Obj) ) {
             this.changeView();
             this.calculatorOutput(airport1Obj, airport2Obj);
